@@ -1,12 +1,14 @@
-import app, { port, host } from "./app";
-import { testConnection as connectDB } from "./config";
+import "dotenv/config";
+import { listen as appListen } from "./app";
+import { testConnection as connectDB, testConnection } from "./config";
 
-connectDB(() => {
-  app.listen(
-    {
-      port,
-      host,
-    },
-    () => console.log(`Server is ready at: http://${host}:${port}`)
-  );
-});
+const main = async () => {
+  try {
+    await testConnection();
+    appListen();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+main();

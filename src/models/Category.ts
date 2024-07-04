@@ -6,17 +6,20 @@ interface SchemaInt {
   createdAt: Date;
 }
 
-const schema = new Schema<SchemaInt>({
-  name: {
-    type: String,
-    required: true,
-  },
+const schema = new Schema<SchemaInt>(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
 
-  createdAt: {
-    type: Date,
-    default: Date.now,
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
-});
+  { versionKey: false }
+);
 
 schema.pre("find", () => {
   console.log("The query for find categories is active");

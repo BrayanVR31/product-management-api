@@ -5,7 +5,7 @@ import fs from "fs";
 import { Model } from "mongoose";
 import { join } from "path";
 import { getImagesByProductId } from "../helpers";
-import { HttpErrors } from "../interfaces";
+import { ServerErrors } from "../interfaces";
 
 interface Params {
   id: string;
@@ -48,7 +48,7 @@ export const removeFilesOnDestroy = async (
   if (!images) {
     const error = new Error(
       "The resource doesn't contains any files"
-    ) as HttpErrors;
+    ) as ServerErrors.HttpError;
     error.status = 404;
     next(new Error("The resource doesn't contains any files"));
     return;

@@ -9,3 +9,5 @@ export enum HttpErrorsEnum {
 export enum HttpErrorsCode {
   "STATUS_404" = "Error to find out the resource or the URL is not correct",
 }
+
+export enum ServerErrors {}

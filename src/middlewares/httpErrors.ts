@@ -1,13 +1,13 @@
 import { Request, Response, NextFunction } from "express";
-import { HttpErrors } from "../interfaces";
+import { ServerErrors } from "../interfaces";
 
 export const destroyRecord = (
-  error: HttpErrors,
+  error: ServerErrors.HttpError,
   request: Request,
   response: Response,
   next: NextFunction
 ) => {
-  response.status(error.status).json({
+  response.status(error.status as number).json({
     error: error.message,
   });
 };

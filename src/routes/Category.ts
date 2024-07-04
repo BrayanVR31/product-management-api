@@ -2,7 +2,7 @@ import { Router } from "express";
 import { CategoryController } from "../controllers";
 
 const router = Router();
-const prefix = "/category";
+const prefix = "/categories";
 
 router.get(prefix, CategoryController.home);
 router.post(prefix, CategoryController.create);
