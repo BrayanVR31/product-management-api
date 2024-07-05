@@ -25,10 +25,10 @@ export const signup: Controller = async (request, response, next) => {
       email,
       password: await encryptPass.encryptPassword(password),
     });
-
     await user.save();
 
-    return response.status(201).json(user.toJSON());
+    // called jwtGenerate when user was saved
+    next();
   } catch (error) {
     // handling server errors
     if (error instanceof ValidationError)

@@ -1,13 +1,14 @@
 import { Router } from "express";
 import { authController } from "../controllers";
-import { userMiddleware } from "../middlewares";
+import { userMiddleware, authMiddleware } from "../middlewares";
 
 const router = Router();
 
 router.post(
   "/signup",
   userMiddleware.existsEmailAndUser,
-  authController.signup
+  authController.signup,
+  authMiddleware.JWTGenerate
 );
 
 router.post("/signin", userMiddleware.hasUser, authController.signin);

@@ -12,6 +12,7 @@ type Middleware = (
   next: NextFunction
 ) => Promise<Response<any, Record<string, any>> | undefined | void>;
 
+// check if exists user and email in collection db
 export const existsEmailAndUser: Middleware = async (
   request,
   response,
@@ -34,6 +35,7 @@ export const existsEmailAndUser: Middleware = async (
   } catch (error) {}
 };
 
+// check if user has correct credentials(password and email) in collection db
 export const hasUser: Middleware = async (request, response, next) => {
   try {
     const { email, password } = request.body;
