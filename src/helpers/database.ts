@@ -1,4 +1,4 @@
-import { Product } from "../models";
+import { Product, User } from "../models";
 
 export const getImagesByProductId = async (id: string) => {
   const product = await Product.findById(id)
@@ -16,4 +16,11 @@ export const getImagesByProductId = async (id: string) => {
       __v: 0,
     });
   return product?.images as { filename: string }[];
+};
+
+export const findEmailByEmail = async (email: string) => {
+  const query = User.where({ email });
+  const result = await query.findOne();
+  console.log("HELPERS...", result);
+  return result;
 };

@@ -21,6 +21,10 @@ export const serverError = (
       return response
         .status(error.status || 404)
         .json({ error: error.message || error.type });
+    case ServerErrors.TypeHttpErrors.VALIDATION_ERROR:
+      return response
+        .status(error.status || 400)
+        .json({ error: error.message || error.type });
     default:
       return response
         .status(error.status || 500)
